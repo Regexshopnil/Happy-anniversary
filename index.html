@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Anniversary</title>
     <style>
-        /* General Styling */
+        /* General Styles */
         body {
             margin: 0;
             padding: 0;
@@ -59,50 +59,77 @@
             box-shadow: 0 5px 15px rgba(255, 105, 180, 0.6);
         }
 
-        .surprise {
+        /* Modal Styles */
+        .modal {
             display: none;
-            margin-top: 20px;
-            font-size: 1.1em;
-            color: #333;
-        }
-
-        .gallery {
-            margin-top: 20px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: auto;
-            max-height: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff69b4;
-            transform: rotate(45deg);
-            animation: floatUp 5s infinite ease-in-out;
-        }
-
-        .heart:before,
-        .heart:after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff69b4;
-            border-radius: 50%;
-            top: -10px;
+            position: fixed;
+            z-index: 100;
             left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.5s ease;
         }
 
-        .heart:after {
-            left: 10px;
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            margin: 20px auto;
+            max-width: 90%;
+            background: #fefefe;
+            border-radius: 10px;
+            overflow: auto;
+            padding: 10px;
+            height: 200px;
+        }
+
+        .timeline div {
+            margin: 10px;
+            padding: 10px;
+            background: #ffd1dc;
+            border-radius: 8px;
+        }
+
+        /* Confetti Button */
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 0, 150, 0.8);
+            animation: confetti 3s linear infinite;
+        }
+
+        /* Animations */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -113,80 +140,73 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 id="greeting">Happy Anniversary, My Love! ❤️</h1>
-        <p>Each day with you is a blessing. Here's to our love, laughter, and many more adventures together. 💕</p>
-        <button id="surpriseButton">Click for a Special Surprise</button>
-        <div id="surprise" class="surprise">
-            <h2>🎉 Here's Your Surprise! 🎉</h2>
-            <p>You are the light of my life, and I’m so grateful for every moment we share. Love you endlessly! 💖</p>
-            <button id="playSong">Play Our Song 🎵</button>
-        </div>
+        <h1>Happy Anniversary, My Love! ❤️</h1>
+        <p><span id="typewriter"></span></p>
+        <button id="surpriseButton">Click for Surprise</button>
+        <button id="timelineButton">Our Timeline</button>
+        <button id="confettiButton">Celebrate 🎉</button>
+    </div>
 
-        <!-- Image Gallery -->
-        <div class="gallery">
-            <img id="galleryImage" src="https://via.placeholder.com/500x300.png?text=Our+Moments" alt="Gallery Image">
+    <!-- Surprise Modal -->
+    <div id="surpriseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Surprise! 🎁</h2>
+            <p>You are my sunshine, and I’m so lucky to have you in my life. 💖</p>
         </div>
     </div>
 
-    <!-- Falling Hearts -->
+    <!-- Timeline -->
+    <div id="timelineModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Our Journey 🌟</h2>
+            <div class="timeline">
+                <div>📅 2022: Our First Meeting</div>
+                <div>📅 2023: First Trip Together</div>
+                <div>📅 2024: Anniversary Celebration!</div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-            document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
-
-        setInterval(createHeart, 300);
-
-        document.body.addEventListener('click', createHeart);
-
-        // Time-Based Greeting
-        const hour = new Date().getHours();
-        const greeting = document.getElementById("greeting");
-        if (hour < 12) {
-            greeting.textContent = "Good Morning, My Love! ☀️";
-        } else if (hour < 18) {
-            greeting.textContent = "Good Afternoon, My Love! 🌸";
-        } else {
-            greeting.textContent = "Good Evening, My Love! 🌙";
-        }
-
-        // Surprise Reveal
-        document.getElementById("surpriseButton").addEventListener("click", function () {
-            document.getElementById("surprise").style.display = "block";
-        });
-
-        // Image Gallery Rotation
-        const images = [
-            "https://via.placeholder.com/500x300.png?text=Our+First+Date",
-            "https://via.placeholder.com/500x300.png?text=Our+Vacation",
-            "https://via.placeholder.com/500x300.png?text=Our+Smiles"
-        ];
-        let index = 0;
+        // Typewriter Effect
+        const messages = ["Every day with you is a dream come true.", "Thank you for your love and support!", "Happy Anniversary! 💕"];
+        let i = 0, j = 0;
+        const typewriter = document.getElementById("typewriter");
         setInterval(() => {
-            index = (index + 1) % images.length;
-            document.getElementById("galleryImage").src = images[index];
-        }, 3000);
+            if (j < messages[i].length) {
+                typewriter.textContent += messages[i][j++];
+            } else if (j === messages[i].length) {
+                setTimeout(() => {
+                    typewriter.textContent = "";
+                    i = (i + 1) % messages.length;
+                    j = 0;
+                }, 2000);
+            }
+        }, 100);
 
-        // Play Music
-        const song = new Audio("https://www.bensound.com/bensound-music/bensound-love.mp3");
-        document.getElementById("playSong").addEventListener("click", () => {
-            song.play();
+        // Modal Handlers
+        const modals = document.querySelectorAll(".modal");
+        const closeButtons = document.querySelectorAll(".close");
+        document.getElementById("surpriseButton").addEventListener("click", () => modals[0].style.display = "block");
+        document.getElementById("timelineButton").addEventListener("click", () => modals[1].style.display = "block");
+        closeButtons.forEach(button => button.addEventListener("click", () => button.parentElement.parentElement.style.display = "none"));
+
+        // Confetti Button
+        document.getElementById("confettiButton").addEventListener("click", () => {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement("div");
+                confetti.className = "confetti-piece";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
         });
     </script>
 </body>
