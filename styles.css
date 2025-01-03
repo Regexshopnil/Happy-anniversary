@@ -1,0 +1,96 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f1f7;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, p {
+  text-align: center;
+}
+
+button {
+  background-color: #ff7c7c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2em;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff5a5a;
+}
+
+/* Hero Section */
+.hero {
+  background: url('your-image.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.hero h1 {
+  font-size: 3em;
+}
+
+.hero p {
+  font-size: 1.2em;
+}
+
+/* Timeline Section */
+.timeline {
+  background-color: #fff;
+  padding: 40px;
+}
+
+.timeline-event {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.timeline-event .event-date {
+  font-weight: bold;
+}
+
+.timeline-event .event-description {
+  font-style: italic;
+}
+
+/* Countdown Section */
+.countdown {
+  background-color: #f0e6f7;
+  padding: 50px;
+}
+
+#countdown-timer {
+  font-size: 2em;
+  font-weight: bold;
+  color: #ff7c7c;
+}
+
+/* Footer Section */
+.footer {
+  background-color: #ff7c7c;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.footer button {
+  margin-top: 20px;
+}
