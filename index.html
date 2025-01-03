@@ -1,265 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Anniversary, My Love</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #111, #333, #222);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
-            color: #f2f2f2;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 30px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
-            padding: 50px 60px;
-            max-width: 700px;
-            animation: fadeIn 1.8s ease-in-out;
-            z-index: 1;
-            position: relative;
-        }
-
-        h1 {
-            font-size: 4.5em;
-            color: #ff4d7d;
-            margin: 0;
-            font-weight: 600;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
-            letter-spacing: 3px;
-        }
-
-        p {
-            font-size: 1.8em;
-            color: #ccc;
-            margin: 25px 0;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        button {
-            padding: 18px 35px;
-            background-color: #ff4d7d;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.4em;
-            cursor: pointer;
-            margin-top: 35px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.5);
-        }
-
-        button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.7);
-            background-color: #ff3366;
-        }
-
-        /* Floating Stars */
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            opacity: 0;
-            animation: starTwinkle 2.5s infinite ease-in-out;
-        }
-
-        @keyframes starTwinkle {
-            0% { opacity: 0; transform: translateY(0) scale(1); }
-            50% { opacity: 1; transform: translateY(-10px) scale(1.2); }
-            100% { opacity: 0; transform: translateY(0) scale(1); }
-        }
-
-        .heart {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            background-color: #ff4d7d;
-            clip-path: polygon(50% 0%, 100% 40%, 75% 100%, 25% 100%, 0% 40%);
-            animation: floatingHearts 4s infinite ease-in-out;
-            opacity: 0;
-            transform: translateX(-50%);
-        }
-
-        @keyframes floatingHearts {
-            0% { transform: translateY(0) scale(1); opacity: 0.8; }
-            50% { transform: translateY(-30px) scale(1.3); opacity: 1; }
-            100% { transform: translateY(0) scale(1); opacity: 0.8; }
-        }
-
-        /* Animations */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.5s ease;
-        }
-
-        .modal-content {
-            background: #333;
-            margin: 15% auto;
-            padding: 30px;
-            border-radius: 25px;
-            max-width: 450px;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .close {
-            color: #ccc;
-            float: right;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #fff;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .confetti-piece {
-            position: absolute;
-            top: -50px;
-            width: 12px;
-            height: 12px;
-            background-color: #ff4d7d;
-            opacity: 0;
-            animation: confettiFall 3s infinite;
-        }
-
-        @keyframes confettiFall {
-            0% { top: -50px; opacity: 1; }
-            100% { top: 100vh; opacity: 0; }
-        }
-
-        /* Particle Effects */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 105, 180, 0.7);
-            animation: moveParticle 4s linear infinite;
-        }
-
-        @keyframes moveParticle {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Anniversary, Love!</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Floating Hearts -->
-    <div class="heart" style="left: 10%; animation-duration: 6s;"></div>
-    <div class="heart" style="left: 20%; animation-duration: 5s;"></div>
-    <div class="heart" style="left: 30%; animation-duration: 7s;"></div>
-    <div class="heart" style="left: 40%; animation-duration: 4s;"></div>
-    <div class="heart" style="left: 50%; animation-duration: 6s;"></div>
-    <div class="heart" style="left: 60%; animation-duration: 5s;"></div>
-    <div class="heart" style="left: 70%; animation-duration: 7s;"></div>
-    <div class="heart" style="left: 80%; animation-duration: 6s;"></div>
-    <div class="heart" style="left: 90%; animation-duration: 5s;"></div>
 
-    <!-- Floating Stars -->
-    <div class="star" style="top: 10%; left: 15%; width: 6px; height: 6px; animation-duration: 2.5s;"></div>
-    <div class="star" style="top: 20%; left: 25%; width: 4px; height: 4px; animation-duration: 3s;"></div>
-    <div class="star" style="top: 30%; left: 35%; width: 8px; height: 8px; animation-duration: 1.8s;"></div>
-    <div class="star" style="top: 50%; left: 45%; width: 5px; height: 5px; animation-duration: 2.2s;"></div>
-    <div class="star" style="top: 60%; left: 55%; width: 6px; height: 6px; animation-duration: 1.5s;"></div>
-
-    <!-- Particle Effects -->
-    <div class="particle" style="top: 10%; left: 10%; width: 10px; height: 10px; animation-duration: 4s;"></div>
-    <div class="particle" style="top: 15%; left: 30%; width: 12px; height: 12px; animation-duration: 3.8s;"></div>
-    <div class="particle" style="top: 20%; left: 50%; width: 8px; height: 8px; animation-duration: 5s;"></div>
-    <div class="particle" style="top: 25%; left: 70%; width: 10px; height: 10px; animation-duration: 4.2s;"></div>
-
-    <!-- Main Container -->
-    <div class="container">
-        <h1>Happy Anniversary, My Love! ❤️</h1>
-        <p><span id="typewriter"></span></p>
-        <button id="surpriseButton">Click for Surprise</button>
-        <button id="celebrateButton">Celebrate 🎉</button>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Happy Anniversary, My Love!</h1>
+      <p>Celebrating <strong>our love</strong> and <strong>special moments</strong> together.</p>
+      <button class="button">See Our Journey</button>
     </div>
+  </header>
 
-    <!-- Surprise Modal -->
-    <div id="surpriseModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Surprise! 🎁</h2>
-            <p>You are the love of my life. I cherish every moment with you. 💖</p>
-        </div>
+  <!-- Relationship Timeline Section -->
+  <section class="timeline">
+    <h2>Our Journey</h2>
+    <div class="timeline-event">
+      <div class="event-date">Jan 24, 2020</div>
+      <div class="event-description">First Date: A moment I will cherish forever.</div>
     </div>
+    <!-- Add more events here -->
+  </section>
 
-    <script>
-        // Typewriter Effect
-        const messages = ["Every day with you is a dream come true.", "Thank you for your love and support!", "Happy Anniversary! 💕"];
-        let i = 0, j = 0;
-        const typewriter = document.getElementById("typewriter");
-        setInterval(() => {
-            if (j < messages[i].length) {
-                typewriter.textContent += messages[i][j++];
-            } else if (j === messages[i].length) {
-                setTimeout(() => {
-                    typewriter.textContent = "";
-                    i = (i + 1) % messages.length;
-                    j = 0;
-                }, 2000);
-            }
-        }, 100);
+  <!-- Countdown Timer Section -->
+  <section class="countdown">
+    <h2>Counting the Days...</h2>
+    <div id="countdown-timer"></div>
+  </section>
 
-        // Modal Handlers
-        const modals = document.querySelectorAll(".modal");
-        const closeButtons = document.querySelectorAll(".close");
-        document.getElementById("surpriseButton").addEventListener("click", () => modals[0].style.display = "block");
-        closeButtons.forEach(button => button.addEventListener("click", () => button.parentElement.parentElement.style.display = "none"));
+  <!-- Footer Section -->
+  <footer class="footer">
+    <p>Thank you for being part of my life. I love you!</p>
+    <button class="button">Gift for You!</button>
+  </footer>
 
-        // Celebrate Button Handler
-        document.getElementById("celebrateButton").addEventListener("click", function () {
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement("div");
-                confetti.className = "confetti-piece";
-                confetti.style.left = Math.random() * 100 + "vw";
-                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3000);
-            }
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
