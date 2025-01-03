@@ -83,6 +83,19 @@ button:hover {
   color: #ff7c7c;
 }
 
+/* Music Section */
+.music {
+  background-color: #f0e6f7;
+  padding: 30px;
+}
+
+audio {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+}
+
 /* Footer Section */
 .footer {
   background-color: #ff7c7c;
